@@ -436,3 +436,61 @@ h2::before {
   height: 100vh;
   pointer-events: none;
   z-index: 99;       }
+
+#home {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3.5rem;
+  min-height: 80vh;
+}
+
+/* ==========================================================================
+   HERO LAYOUT (SQUARE PHOTO RIGHT, UNTOUCHED TEXT LEFT)
+   ========================================================================== */
+#home {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+/* Keeps your paragraph and text layout exactly as you originally designed it */
+.hero-content {
+  flex: 1;
+}
+
+.hero-avatar-container {
+  flex-shrink: 0;
+}
+
+/* Square profile photo */
+.hero-avatar {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 12px; /* Set to 0px if you want razor-sharp square corners */
+  border: 1px solid rgb(58, 53, 53);
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-avatar:hover {
+  transform: scale(1.02);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 45px rgba(255, 255, 255, 0.12);
+}
+
+/* Mobile alignment fallback */
+@media (max-width: 768px) {
+  #home {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .hero-avatar {
+    width: 180px;
+    height: 180px;
+  }
+}
