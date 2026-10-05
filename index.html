@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+</head>
+<body>
+      <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>My Portfolio</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+      </header>
+
+<main>
+    <section id="home">
+    <h1>Jeth Casile</h1>
+    <p>Currently pursuing Information Technology at Cordova Public College, I build user-focused web interfaces and solve real-world technical problems. Welcome to my portfolio!</p>
+    </section>
+</main>
+    
+    <section id="about">
+    <h2>About Me</h2>
+    <p>I am an Information Technology student at Cordova Public College with a strong passion for web development and technical problem-solving. My focus lies in building clean, responsive web layouts using HTML and CSS, alongside diagnosing and repairing computer hardware systems.
+
+Driven by curiosity and practical logic, I enjoy turning technical concepts into functional digital solutions—whether that means writing structured code or troubleshooting complex computer hardware.</p>
+
+    </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="project-card">
+    <h3>Computer Repair Service Request Portal</h3>
+    
+    <!-- Thumbnail Preview -->
+    <a href="#img-repair">
+        <img src="images/repair-portal-proof.png" alt="Repair Portal Preview" class="project-thumb">
+    </a>
+
+    <p>Built as part of my Information Technology coursework at Cordova Public College, this project provides a structured digital front desk for hardware repair services.</p>
+
+    <!-- Project Links -->
+    <div class="project-links">
+        <a href="https://jethcasile-xxcu.github.io/repair-service-portal/" target="_blank" class="btn primary-btn">Live Demo</a>
+        <a href="https://github.com/jethcasile-xxcu/repair-service-portal" target="_blank" class="btn secondary-btn">View Code</a>
+    </div>
+</div>
+
+        <!-- PROJECT 2 -->
+    <div class="project-card">
+        <h3>Developer & IT Portfolio Website</h3>
+        
+        <!-- Links to #img-portfolio -->
+        <a href="#img-portfolio">
+            <img src="images/portfolio-proof.png" alt="Portfolio Preview" class="project-thumb">
+        </a>
+
+        <p>A clean, responsive personal portfolio website created to showcase IT projects, technical skills, and academic coursework.</p>
+    </div>
+</section>
+
+<!-- FULL-SCREEN OVERLAYS (Place at the bottom of your HTML, right before </body>) -->
+
+<!-- Lightbox for Project 1 -->
+<div id="img-repair" class="lightbox">
+    <a href="#projects" class="lightbox-close">&times;</a>
+    <img src="images/repair-portal-proof.png" alt="Repair Portal Full Screen">
+</div>
+
+<!-- Lightbox for Project 2 -->
+<div id="img-portfolio" class="lightbox">
+    <a href="#projects" class="lightbox-close">&times;</a>
+    <img src="images/portfolio-proof.png" alt="Portfolio Full Screen">
+</div>
+</section>
+
+    <section id="contact">
+    <h2>Get In Touch</h2>
+    <p>I am always open to discussing new projects, web development ideas, or IT opportunities.</p>
+    
+    <div class="contact-grid">
+        <div class="contact-card">
+            <h3>Email</h3>
+            <p><a href="mailto:jethxcali@gmail.com">jethxcali@gmail.com</a></p>
+        </div>
+    <div class="contact-card">
+            <h3>GitHub</h3>
+            <p><a href="https://github.com/jethcasile-xxcu" target="_blank">github.com/jethcasile-xxcu</a></p>
+        </div>
+
+        <div class="contact-card">
+            <h3>Location</h3>
+            <p>Cordova, Cebu, Philippines</p>
+        </div>
+
+</section>
+
+<script>
+  document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth) * 100;
+    const y = (e.clientY / window.innerHeight) * 100;
+    document.body.style.setProperty('--mouse-x', `${x}%`);
+    document.body.style.setProperty('--mouse-y', `${y}%`);
+  });
+</script>
+
+<!-- Interactive Creature Canvas Overlay -->
+<canvas id="creature-canvas"></canvas>
+<script src="creature-cursor.js"></script>
+</body>
+
+
+
+
+</body>
+</html>

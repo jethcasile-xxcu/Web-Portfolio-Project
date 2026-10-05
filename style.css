@@ -1,0 +1,470 @@
+/* ==========================================================================
+   1. RESET & VARIABLE DEFINITIONS
+   ========================================================================== */
+:root {
+  --bg-dark: #09090b;
+  --bg-card: #121215;
+  --bg-card-hover: #1a1a1e;
+  --border-color: #27272a;
+  --border-glow: #3f3f46;
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --accent-white: #ffffff;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   2. CLEAN DARK BACKGROUND
+   ========================================================================== */
+body {
+  background-color: #08080a;
+}
+
+body::before,
+body::after {
+  display: none;
+}
+
+/* ==========================================================================
+   3. NAVIGATION BAR
+   ========================================================================== */
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(9, 9, 11, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+  transition: border-color var(--transition-fast);
+}
+
+header:hover {
+  border-color: var(--border-glow);
+}
+
+.navbar {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2rem;
+}
+
+.logo h1 {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+  cursor: pointer;
+}
+
+.logo h1:hover {
+  color: var(--accent-white);
+  transform: translateX(3px);
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  font-weight: 500;
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color var(--transition-fast);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--accent-white);
+  transition: width var(--transition-smooth);
+}
+
+.nav-links a:hover {
+  color: var(--accent-white);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ==========================================================================
+   4. SECTIONS & LAYOUT STRUCTURE
+   ========================================================================== */
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+  border-bottom: 1px solid rgba(39, 39, 42, 0.5);
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 2rem;
+  color: var(--accent-white);
+  position: relative;
+  display: inline-block;
+}
+
+h2::before {
+  content: "//";
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* ==========================================================================
+   5. HERO SECTION (#home)
+   ========================================================================== */
+#home {
+  padding-top: 9rem;
+  padding-bottom: 7rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+#home h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform var(--transition-smooth), filter var(--transition-smooth);
+  cursor: default;
+}
+
+#home h1:hover {
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.25));
+  transform: translateY(-2px);
+}
+
+#home p {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 680px;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   6. ABOUT SECTION (#about)
+   ========================================================================== */
+#about p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+/* ==========================================================================
+   7. PROJECTS SECTION (#projects)
+   ========================================================================== */
+#projects {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.04), transparent 40%);
+  pointer-events: none;
+}
+
+.project-card:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--border-glow);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.03);
+}
+
+.project-card h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  transition: color var(--transition-fast);
+}
+
+.project-card:hover h3 {
+  color: var(--accent-white);
+}
+
+.project-thumb {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0.75rem 0 1.25rem 0;
+  border: 1px solid var(--border-color);
+  filter: brightness(0.85) contrast(1.05);
+  transition: all var(--transition-smooth);
+}
+
+.project-card:hover .project-thumb {
+  filter: brightness(1) contrast(1);
+  border-color: var(--border-glow);
+  transform: scale(1.01);
+}
+
+.project-card p {
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  font-family: var(--font-mono);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.primary-btn {
+  background-color: var(--text-primary);
+  color: var(--bg-dark);
+  border: 1px solid var(--text-primary);
+}
+
+.primary-btn:hover {
+  background-color: var(--accent-white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25);
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.secondary-btn:hover {
+  border-color: var(--accent-white);
+  color: var(--accent-white);
+  transform: translateY(-2px);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   8. LIGHTBOX OVERLAY
+   ========================================================================== */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-smooth);
+  z-index: 1000;
+}
+
+.lightbox:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 85vh;
+  border-radius: 8px;
+  border: 1px solid var(--border-glow);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  transform: scale(0.95);
+  transition: transform var(--transition-smooth);
+}
+
+.lightbox:target img {
+  transform: scale(1);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 2rem;
+  right: 2.5rem;
+  color: var(--text-secondary);
+  font-size: 2.5rem;
+  text-decoration: none;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  line-height: 1;
+}
+
+.lightbox-close:hover {
+  color: var(--accent-white);
+  transform: scale(1.15) rotate(90deg);
+}
+
+/* ==========================================================================
+   9. CONTACT SECTION (#contact)
+   ========================================================================== */
+#contact p {
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  font-size: 1.05rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.contact-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  border-radius: 10px;
+  transition: all var(--transition-smooth);
+}
+
+.contact-card:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--border-glow);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.contact-card h3 {
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.contact-card p, 
+.contact-card a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color var(--transition-fast);
+}
+
+.contact-card a:hover {
+  color: var(--accent-white);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ==========================================================================
+   10. RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .nav-links {
+    gap: 1.25rem;
+  }
+
+  section {
+    padding: 4rem 1.25rem;
+  }
+
+  #home {
+    padding-top: 6rem;
+  }
+
+  .project-card {
+    padding: 1.25rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   INTERACTIVE CANVAS OVERLAY
+   ========================================================================== */
+#creature-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* Allows user clicks to pass through to underlying links/buttons */
+  z-index: 99;          /* Sits above background gradients, below lightbox overlays */
+}
