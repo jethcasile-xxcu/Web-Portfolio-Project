@@ -494,3 +494,68 @@ h2::before {
     height: 180px;
   }
 }
+
+/* ==========================================================================
+   STANDARD WEBSITE FOOTER
+   ========================================================================== */
+footer {
+  margin-top: auto;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2.5rem 0;
+  background-color: #08080a;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-left p {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.85rem;
+  margin: 0;
+  font-family: inherit;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-right a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.2s ease;
+}
+
+.footer-right a:hover {
+  color: #ffffff;
+}
+
+.footer-right .top-link {
+  color: rgba(255, 255, 255, 0.8);
+  padding-left: 0.5rem;
+}
+
+/* Mobile responsive layout */
+@media (max-width: 640px) {
+  .footer-container {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .footer-right {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
