@@ -1,5 +1,9 @@
+/* ==========================================================================
+   1. Color Palette & Theme Variables
+   ========================================================================== */
 :root {
-  --bg-dark: #09090b;
+  /* Current Dark Mode Background */
+  --bg-main: #09090b;
   --bg-card: #121215;
   --bg-card-hover: #1a1a1e;
   --border-color: #27272a;
@@ -8,12 +12,41 @@
   --text-secondary: #a1a1aa;
   --text-muted: #71717a;
   --accent-white: #ffffff;
+  --header-bg: rgba(9, 9, 11, 0.75);
+  --footer-bg: #08080a;
+  --heading-gradient: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+  
+  --btn-primary-bg: #f4f4f5;
+  --btn-primary-text: #09090b;
+
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Light Mode Theme Overrides */
+body.light {
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --border-color: #e2e8f0;
+  --border-glow: #cbd5e1;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --accent-white: #020617;
+  --header-bg: rgba(248, 250, 252, 0.85);
+  --footer-bg: #f1f5f9;
+  --heading-gradient: linear-gradient(180deg, #0f172a 0%, #475569 100%);
+  
+  --btn-primary-bg: #0f172a;
+  --btn-primary-text: #ffffff;
+}
+
+/* ==========================================================================
+   2. Reset & Global Styles
+   ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -27,33 +60,34 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-dark);
+  background-color: var(--bg-main);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
-body {
-  background-color: #08080a;
+main {
+  flex: 1;
 }
 
-body::before,
-body::after {
-  display: none;
-}
-
+/* ==========================================================================
+   3. Navigation Header
+   ========================================================================== */
 header {
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(9, 9, 11, 0.75);
+  background: var(--header-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-color);
-  transition: border-color var(--transition-fast);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
 }
 
 header:hover {
@@ -120,6 +154,9 @@ header:hover {
   width: 100%;
 }
 
+/* ==========================================================================
+   4. Section Base Styles
+   ========================================================================== */
 section {
   max-width: 1100px;
   margin: 0 auto;
@@ -145,38 +182,186 @@ h2::before {
   font-size: 1.2rem;
 }
 
-#home {
-  padding-top: 9rem;
-  padding-bottom: 7rem;
+/* ==========================================================================
+   5. Hero Section (Heading & Text Left, PFP Right)
+   ========================================================================== */
+#home.hero {
+  padding-top: 8rem;
+  padding-bottom: 6rem;
   border-bottom: 1px solid var(--border-color);
 }
 
-#home h1 {
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3.5rem;
+  width: 100%;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 620px;
+}
+
+/* Dynamic Gradient Heading Visible in Both Themes */
+#home h1,
+.hero-title {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1.1;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+  margin-bottom: 1.25rem;
+  background: var(--heading-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: transform var(--transition-smooth), filter var(--transition-smooth);
   cursor: default;
 }
 
-#home h1:hover {
-  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.25));
+#home h1:hover,
+.hero-title:hover {
+  filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.15));
   transform: translateY(-2px);
 }
 
-#home p {
-  font-size: 1.15rem;
-  color: var(--text-secondary);
-  max-width: 680px;
-  line-height: 1.7;
+body:not(.light) #home h1:hover,
+body:not(.light) .hero-title:hover {
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.25));
 }
 
+.hero-description {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
 
+/* PFP Image Container (Right Side User's POV) */
+.hero-image-wrapper {
+  flex-shrink: 0;
+}
+
+.hero-img {
+  width: 230px;
+  height: 270px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.hero-img:hover {
+  transform: scale(1.02);
+  border-color: var(--border-glow);
+  box-shadow: 0 16px 45px rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================================================================
+   6. Action Buttons & Oval Theme Toggle Button
+   ========================================================================== */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.4rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: var(--font-mono);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: inherit;
+  line-height: 1;
+}
+
+/* Primary Button Text Visibility Fix */
+.primary-btn {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text) !important;
+  border: 1px solid var(--btn-primary-bg);
+}
+
+.primary-btn:hover {
+  background-color: var(--accent-white);
+  color: #000000 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+body.light .primary-btn {
+  background-color: #0f172a;
+  color: #ffffff !important;
+  border-color: #0f172a;
+}
+
+body.light .primary-btn:hover {
+  background-color: #1e293b;
+}
+
+/* Secondary Button */
+.secondary-btn {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.secondary-btn:hover {
+  border-color: var(--accent-white);
+  color: var(--accent-white);
+  transform: translateY(-2px);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Distinct Oval / Pill Shape Theme Switcher Button */
+.theme-btn-oval {
+  border-radius: 9999px;
+  padding: 0.7rem 1.15rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glow);
+  color: var(--text-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.theme-btn-oval:hover {
+  border-color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.theme-btn-oval svg,
+.theme-btn-oval i {
+  width: 1.15rem;
+  height: 1.15rem;
+  stroke: currentColor;
+  display: block;
+}
+
+/* Theme GSAP Overlay */
+.theme-wipe-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ==========================================================================
+   7. About, Projects, Lightbox & Contact
+   ========================================================================== */
 #about p {
   font-size: 1.05rem;
   color: var(--text-secondary);
@@ -184,7 +369,6 @@ h2::before {
   line-height: 1.8;
   white-space: pre-line;
 }
-
 
 #projects {
   display: flex;
@@ -255,49 +439,12 @@ h2::before {
   margin-bottom: 1.5rem;
 }
 
-/* Buttons */
 .project-links {
   display: flex;
   gap: 1rem;
 }
 
-.btn {
-  display: inline-block;
-  padding: 0.65rem 1.25rem;
-  border-radius: 6px;
-  font-size: 0.88rem;
-  font-weight: 500;
-  font-family: var(--font-mono);
-  text-decoration: none;
-  transition: all var(--transition-fast);
-  cursor: pointer;
-}
-
-.primary-btn {
-  background-color: var(--text-primary);
-  color: var(--bg-dark);
-  border: 1px solid var(--text-primary);
-}
-
-.primary-btn:hover {
-  background-color: var(--accent-white);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25);
-}
-
-.secondary-btn {
-  background-color: transparent;
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
-}
-
-.secondary-btn:hover {
-  border-color: var(--accent-white);
-  color: var(--accent-white);
-  transform: translateY(-2px);
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
+/* Lightbox Styling */
 .lightbox {
   position: fixed;
   top: 0;
@@ -351,6 +498,7 @@ h2::before {
   transform: scale(1.15) rotate(90deg);
 }
 
+/* Contact Section */
 #contact p {
   color: var(--text-secondary);
   margin-bottom: 2.5rem;
@@ -402,32 +550,7 @@ h2::before {
   text-underline-offset: 4px;
 }
 
-@media (max-width: 768px) {
-  .navbar {
-    padding: 1rem;
-  }
-
-  .nav-links {
-    gap: 1.25rem;
-  }
-
-  section {
-    padding: 4rem 1.25rem;
-  }
-
-  #home {
-    padding-top: 6rem;
-  }
-
-  .project-card {
-    padding: 1.25rem;
-  }
-
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
+/* Interactive Creature Canvas & Light Theme Inversion Fix */
 #creature-canvas {
   position: fixed;
   top: 0;
@@ -435,75 +558,23 @@ h2::before {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 99;       }
+  z-index: 99;
+}
 
-#home {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3.5rem;
-  min-height: 80vh;
+body.light #creature-canvas {
+  filter: invert(0.92) contrast(1.2);
 }
 
 /* ==========================================================================
-   HERO LAYOUT (SQUARE PHOTO RIGHT, UNTOUCHED TEXT LEFT)
-   ========================================================================== */
-#home {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-}
-
-/* Keeps your paragraph and text layout exactly as you originally designed it */
-.hero-content {
-  flex: 1;
-}
-
-.hero-avatar-container {
-  flex-shrink: 0;
-}
-
-/* Square profile photo */
-.hero-avatar {
-  width: 240px;
-  height: 240px;
-  object-fit: cover;
-  border-radius: 12px; /* Set to 0px if you want razor-sharp square corners */
-  border: 1px solid rgb(58, 53, 53);
-  box-shadow: 0 0 35px rgba(255, 255, 255, 0.05);
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hero-avatar:hover {
-  transform: scale(1.02);
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 0 45px rgba(255, 255, 255, 0.12);
-}
-
-/* Mobile alignment fallback */
-@media (max-width: 768px) {
-  #home {
-    flex-direction: column-reverse;
-    align-items: flex-start;
-    gap: 2rem;
-  }
-
-  .hero-avatar {
-    width: 180px;
-    height: 180px;
-  }
-}
-
-/* ==========================================================================
-   STANDARD WEBSITE FOOTER
+   8. Footer
    ========================================================================== */
 footer {
   margin-top: auto;
   width: 100%;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--border-color);
   padding: 2.5rem 0;
-  background-color: #08080a;
+  background-color: var(--footer-bg);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
 .footer-container {
@@ -517,10 +588,9 @@ footer {
 }
 
 .footer-left p {
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--text-secondary);
   font-size: 0.85rem;
   margin: 0;
-  font-family: inherit;
 }
 
 .footer-right {
@@ -530,23 +600,60 @@ footer {
 }
 
 .footer-right a {
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--text-secondary);
   text-decoration: none;
   font-size: 0.85rem;
-  transition: color 0.2s ease;
+  transition: color var(--transition-fast);
 }
 
 .footer-right a:hover {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .footer-right .top-link {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-primary);
   padding-left: 0.5rem;
 }
 
-/* Mobile responsive layout */
-@media (max-width: 640px) {
+/* ==========================================================================
+   9. Mobile Responsiveness
+   ========================================================================== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .nav-links {
+    gap: 1.25rem;
+  }
+
+  section {
+    padding: 4rem 1.25rem;
+  }
+
+  #home.hero {
+    padding-top: 6rem;
+  }
+
+  .hero-container {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .hero-img {
+    width: 180px;
+    height: 220px;
+  }
+
+  .project-card {
+    padding: 1.25rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
   .footer-container {
     flex-direction: column-reverse;
     text-align: center;

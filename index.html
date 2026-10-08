@@ -3,158 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PORTFOLIO</title>
+    <title>Jeth Aaron Casile | Portfolio</title>
     <link rel="stylesheet" href="style.css">
-  
+    
+    <!-- Third-Party Scripts & Styles -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-      <header>
-        <nav class="navbar">
-            <div class="logo">
-                <h1>My Portfolio</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-      </header>
 
-<main>
-   <section id="home">
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <h1>My Portfolio</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <div class="hero-content">
-    <span class="hero-greeting">// Hi, I'm</span>
-    <h1>Jeth Aaron Casile</h1>
-    <p>Currently pursuing Information Technology at Cordova Public College, I build user-focused web interfaces and solve real-world technical problems. Welcome to my portfolio!</p>
+  <main>
+    <!-- Hero Section (Home) -->
+    <section id="home" class="hero">
+      <div class="hero-container">
+        
+        <!-- Left Column: Name, Bio & Action Buttons (User POV Left) -->
+        <div class="hero-text">
+          <h1 class="hero-title">Jeth Casile</h1>
+          <p class="hero-description">
+            Currently pursuing Information Technology at Cordova Public College, I build user-focused web interfaces and solve real-world technical problems. Welcome to my portfolio!
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn primary-btn">View Work</a>
+            <a href="#contact" class="btn secondary-btn">Get in Touch</a>
+            
+            <!-- Distinct Oval Theme Toggle Button -->
+            <button id="theme-toggle" class="btn theme-btn-oval" aria-label="Toggle Theme" type="button">
+              <i data-lucide="sun" id="theme-icon"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Profile Photo (User POV Right) -->
+        <div class="hero-image-wrapper">
+          <img src="images/mypfpdark.jpg" alt="Jeth Casile" class="hero-img" id="hero-profile-img">
+        </div>
+
+      </div>
+    </section>
     
-    <div class="hero-actions" style="margin-top: 2rem;">
-      <a href="#projects" class="btn primary-btn">View Work</a>
-      <a href="#contact" class="btn secondary-btn">Get in Touch</a>
-    </div>
-  </div>
-
-
-  <div class="hero-avatar-container">
-    <img src="images/profile.jpg" alt="Jeth Aaron Casile" class="hero-avatar">
-  </div>
-</section>
-    
+    <!-- About Section -->
     <section id="about">
-    <h2>About Me</h2>
-    <p>I am an Information Technology student at Cordova Public College with a strong passion for web development and technical problem-solving. My focus lies in building clean, responsive web layouts using HTML and CSS, alongside diagnosing and repairing computer hardware systems.
+      <h2>About Me</h2>
+      <p>I am an Information Technology student at Cordova Public College with a strong passion for web development and technical problem-solving. My focus lies in building clean, responsive web layouts using HTML and CSS, alongside diagnosing and repairing computer hardware systems.
 
 Driven by curiosity and practical logic, I enjoy turning technical concepts into functional digital solutions, whether that means writing structured code or troubleshooting complex computer hardware.</p>
-
     </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2>Projects</h2>
 
-    <div class="project-card">
-    <h3>Computer Repair Service Request Portal</h3>
-    
-    <!-- Thumbnail Preview -->
-    <a href="#img-repair">
-        <img src="images/repair-portal-proof.png" alt="Repair Portal Preview" class="project-thumb">
-    </a>
+      <!-- PROJECT 1 -->
+      <div class="project-card">
+        <h3>Computer Repair Service Request Portal</h3>
+        
+        <a href="#img-repair">
+          <img src="images/repair-portal-proof.png" alt="Repair Portal Preview" class="project-thumb">
+        </a>
 
-    <p>Built as part of my Information Technology coursework at Cordova Public College, this project provides a structured digital front desk for hardware repair services.</p>
+        <p>Built as part of my Information Technology coursework at Cordova Public College, this project provides a structured digital front desk for hardware repair services.</p>
 
-    <!-- Project Links -->
-    <div class="project-links">
-        <a href="https://jethcasile-xxcu.github.io/repair-service-portal/" target="_blank" class="btn primary-btn">Live Demo</a>
-        <a href="https://github.com/jethcasile-xxcu/repair-service-portal" target="_blank" class="btn secondary-btn">View Code</a>
-    </div>
-</div>
+        <div class="project-links">
+          <a href="https://jethcasile-xxcu.github.io/repair-service-portal/" target="_blank" class="btn primary-btn">Live Demo</a>
+          <a href="https://github.com/jethcasile-xxcu/repair-service-portal" target="_blank" class="btn secondary-btn">View Code</a>
+        </div>
+      </div>
 
-        <!-- PROJECT 2 -->
-    <div class="project-card">
+      <!-- PROJECT 2 -->
+      <div class="project-card">
         <h3>Developer & IT Portfolio Website</h3>
         
-        <!-- Links to #img-portfolio -->
         <a href="#img-portfolio">
-            <img src="images/portfolio-proof.png" alt="Portfolio Preview" class="project-thumb">
+          <img src="images/portfolio-proof.png" alt="Portfolio Preview" class="project-thumb">
         </a>
 
         <p>A clean, responsive personal portfolio website created to showcase IT projects, technical skills, and academic coursework.</p>
+      </div>
+    </section>
+
+    <!-- Full-Screen Lightbox Overlays -->
+    <div id="img-repair" class="lightbox">
+      <a href="#projects" class="lightbox-close">&times;</a>
+      <img src="images/repair-portal-proof.png" alt="Repair Portal Full Screen">
     </div>
-</section>
 
-<!-- FULL-SCREEN OVERLAYS -->
+    <div id="img-portfolio" class="lightbox">
+      <a href="#projects" class="lightbox-close">&times;</a>
+      <img src="images/portfolio-proof.png" alt="Portfolio Full Screen">
+    </div>
 
-<!-- Lightbox for Project 1 -->
-<div id="img-repair" class="lightbox">
-    <a href="#projects" class="lightbox-close">&times;</a>
-    <img src="images/repair-portal-proof.png" alt="Repair Portal Full Screen">
-</div>
-
-<!-- Lightbox for Project 2 -->
-<div id="img-portfolio" class="lightbox">
-    <a href="#projects" class="lightbox-close">&times;</a>
-    <img src="images/portfolio-proof.png" alt="Portfolio Full Screen">
-</div>
-</section>
-
+    <!-- Contact Section -->
     <section id="contact">
-    <h2>Get In Touch</h2>
-    <p>I am always open to discussing new projects, web development ideas, or IT opportunities.</p>
-    
-    <div class="contact-grid">
+      <h2>Get In Touch</h2>
+      <p>I am always open to discussing new projects, web development ideas, or IT opportunities.</p>
+      
+      <div class="contact-grid">
         <div class="contact-card">
-            <h3>Email</h3>
-            <p><a href="mailto:jethxcali@gmail.com">jethxcali@gmail.com</a></p>
+          <h3>Email</h3>
+          <p><a href="mailto:jethxcali@gmail.com">jethxcali@gmail.com</a></p>
         </div>
-    <div class="contact-card">
-            <h3>GitHub</h3>
-            <p><a href="https://github.com/jethcasile-xxcu" target="_blank">github.com/jethcasile-xxcu</a></p>
-        </div>
-
         <div class="contact-card">
-            <h3>Location</h3>
-            <p>Cordova, Cebu, Philippines</p>
+          <h3>GitHub</h3>
+          <p><a href="https://github.com/jethcasile-xxcu" target="_blank">github.com/jethcasile-xxcu</a></p>
         </div>
+        <div class="contact-card">
+          <h3>Location</h3>
+          <p>Cordova, Cebu, Philippines</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-</section>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <p>&copy; 2026 Jeth Aaron Casile. Built with HTML, CSS & JS.</p>
+      </div>
 
-<script>
-  document.addEventListener('mousemove', (e) => {
-    const x = (e.clientX / window.innerWidth) * 100;
-    const y = (e.clientY / window.innerHeight) * 100;
-    document.body.style.setProperty('--mouse-x', `${x}%`);
-    document.body.style.setProperty('--mouse-y', `${y}%`);
-  });
-</script>
-
-<!-- Interactive Creature Canvas Overlay -->
-<canvas id="creature-canvas"></canvas>
-<script src="creature-cursor.js"></script>
-</body>
- 
-<footer>
-  <div class="footer-container">
-    <div class="footer-left">
-      <p>&copy; 2026 Jeth Aaron Casile. Built with HTML, CSS & JS.</p>
+      <div class="footer-right">
+        <a href="https://github.com/jethcasile-xxcu" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:jethxcali@gmail.com">Email</a>
+        <a href="#home" class="top-link">Top ↑</a>
+      </div>
     </div>
+  </footer>
 
-    <div class="footer-right">
-      <a href="https://github.com/jethcasile-xxcu" target="_blank" rel="noopener">GitHub</a>
-      <a href="mailto:jethxcali@gmail.com">Email</a>
-      <a href="#home" class="top-link">Top ↑</a>
-    </div>
-  </div>
-</footer>
+  <!-- Interactive Creature Canvas Overlay -->
+  <canvas id="creature-canvas"></canvas>
+  <script src="creature-cursor.js"></script>
 
+  <!-- Mouse Tracking Variable Script -->
+  <script>
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      document.body.style.setProperty('--mouse-x', `${x}%`);
+      document.body.style.setProperty('--mouse-y', `${y}%`);
+    });
+  </script>
 
+  <!-- GSAP Theme Wipe, Lucide Icon & Profile Image Swap Script -->
+  <script>
+    if (window.lucide) {
+      lucide.createIcons();
+    }
 
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    let isWiping = false;
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', (e) => {
+        if (isWiping) return;
+        isWiping = true;
+
+        const isLight = document.body.classList.contains('light');
+        const targetIsLight = !isLight;
+
+        const rect = themeToggleBtn.getBoundingClientRect();
+        const x = e.clientX || rect.left + rect.width / 2;
+        const y = e.clientY || rect.top + rect.height / 2;
+
+        const overlay = document.createElement('div');
+        overlay.className = 'theme-wipe-overlay';
+        overlay.style.backgroundColor = targetIsLight ? '#f8fafc' : '#09090b';
+        document.body.appendChild(overlay);
+
+        // Helper function to handle DOM updates at the exact moment the wipe completes
+        const applyThemeChanges = () => {
+          document.body.classList.toggle('light', targetIsLight);
+
+          // Swap profile photo dynamically
+          const profileImg = document.getElementById('hero-profile-img') || document.querySelector('.hero-img');
+          if (profileImg) {
+            profileImg.src = targetIsLight ? 'images/mypfplight.jpg' : 'images/mypfpdark.jpg';
+          }
+
+          // Toggle theme icon
+          const icon = document.getElementById('theme-icon');
+          if (icon) {
+            icon.setAttribute('data-lucide', targetIsLight ? 'moon' : 'sun');
+            if (window.lucide) lucide.createIcons();
+          }
+        };
+
+        if (window.gsap) {
+          gsap.fromTo(
+            overlay,
+            { clipPath: `circle(0px at ${x}px ${y}px)` },
+            {
+              clipPath: `circle(150vmax at ${x}px ${y}px)`,
+              duration: 0.65,
+              ease: 'power3.inOut',
+              onComplete: () => {
+                applyThemeChanges();
+
+                gsap.to(overlay, {
+                  opacity: 0,
+                  duration: 0.2,
+                  onComplete: () => {
+                    overlay.remove();
+                    isWiping = false;
+                  }
+                });
+              }
+            }
+          );
+        } else {
+          applyThemeChanges();
+          overlay.remove();
+          isWiping = false;
+        }
+      });
+    }
+  </script>
 </body>
 </html>
