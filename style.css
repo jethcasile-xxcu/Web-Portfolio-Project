@@ -1,8 +1,7 @@
 /* ==========================================================================
-   1. Color Palette & Theme Variables
+   1. Cilor pallete ug theme vaiables
    ========================================================================== */
 :root {
-  /* Current Dark Mode Background */
   --bg-main: #09090b;
   --bg-card: #121215;
   --bg-card-hover: #1a1a1e;
@@ -25,7 +24,7 @@
   --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Light Mode Theme Overrides */
+/* Light Mode ni*/
 body.light {
   --bg-main: #f8fafc;
   --bg-card: #ffffff;
@@ -45,7 +44,7 @@ body.light {
 }
 
 /* ==========================================================================
-   2. Reset & Global Styles
+   2. idk unsa nigga
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -76,7 +75,7 @@ main {
 }
 
 /* ==========================================================================
-   3. Navigation Header
+   3. Nav header ni
    ========================================================================== */
 header {
   position: sticky;
@@ -155,7 +154,7 @@ header:hover {
 }
 
 /* ==========================================================================
-   4. Section Base Styles
+   4. Section
    ========================================================================== */
 section {
   max-width: 1100px;
@@ -183,7 +182,7 @@ h2::before {
 }
 
 /* ==========================================================================
-   5. Hero Section (Heading & Text Left, PFP Right)
+   5. dual layer pfp ug hero section
    ========================================================================== */
 #home.hero {
   padding-top: 8rem;
@@ -204,7 +203,6 @@ h2::before {
   max-width: 620px;
 }
 
-/* Dynamic Gradient Heading Visible in Both Themes */
 #home h1,
 .hero-title {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -237,29 +235,67 @@ body:not(.light) .hero-title:hover {
   margin-bottom: 2rem;
 }
 
-/* PFP Image Container (Right Side User's POV) */
+/* Profile Photo */
 .hero-image-wrapper {
   flex-shrink: 0;
 }
 
-.hero-img {
+.pfp-container {
+  position: relative;
   width: 230px;
   height: 270px;
-  object-fit: cover;
   border-radius: 16px;
+  overflow: hidden;
   border: 1px solid var(--border-color);
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
-.hero-img:hover {
-  transform: scale(1.02);
-  border-color: var(--border-glow);
-  box-shadow: 0 16px 45px rgba(255, 255, 255, 0.08);
+.pfp-img,
+.pfp-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.3s ease;
 }
 
+/* Video base state */
+.pfp-video {
+  opacity: 0;
+  z-index: 2;
+}
+
+/* Theme video visibility */
+.pfp-video.light-asset {
+  display: none;
+}
+.pfp-video.dark-asset {
+  display: block;
+}
+
+body.light .pfp-video.dark-asset {
+  display: none;
+}
+body.light .pfp-video.light-asset {
+  display: block;
+}
+
+/* Active Hover / Touch State */
+.pfp-container.active .pfp-img {
+  opacity: 0;
+}
+.pfp-container.active .pfp-video {
+  opacity: 1;
+}
 /* ==========================================================================
-   6. Action Buttons & Oval Theme Toggle Button
+   6. oval buttons, primary ug secondary buttons
    ========================================================================== */
 .hero-actions {
   display: flex;
@@ -286,7 +322,6 @@ body:not(.light) .hero-title:hover {
   line-height: 1;
 }
 
-/* Primary Button Text Visibility Fix */
 .primary-btn {
   background-color: var(--btn-primary-bg);
   color: var(--btn-primary-text) !important;
@@ -310,7 +345,6 @@ body.light .primary-btn:hover {
   background-color: #1e293b;
 }
 
-/* Secondary Button */
 .secondary-btn {
   background-color: transparent;
   color: var(--text-primary);
@@ -324,7 +358,6 @@ body.light .primary-btn:hover {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Distinct Oval / Pill Shape Theme Switcher Button */
 .theme-btn-oval {
   border-radius: 9999px;
   padding: 0.7rem 1.15rem;
@@ -348,7 +381,6 @@ body.light .primary-btn:hover {
   display: block;
 }
 
-/* Theme GSAP Overlay */
 .theme-wipe-overlay {
   position: fixed;
   top: 0;
@@ -360,7 +392,7 @@ body.light .primary-btn:hover {
 }
 
 /* ==========================================================================
-   7. About, Projects, Lightbox & Contact
+   7. About, prjects, contact ug lightbox styling
    ========================================================================== */
 #about p {
   font-size: 1.05rem;
@@ -550,7 +582,7 @@ body.light .primary-btn:hover {
   text-underline-offset: 4px;
 }
 
-/* Interactive Creature Canvas & Light Theme Inversion Fix */
+/* Interactive Creature Canvas */
 #creature-canvas {
   position: fixed;
   top: 0;
@@ -641,7 +673,7 @@ footer {
     gap: 2rem;
   }
 
-  .hero-img {
+  .pfp-container {
     width: 180px;
     height: 220px;
   }

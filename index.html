@@ -6,7 +6,7 @@
     <title>Jeth Aaron Casile | Portfolio</title>
     <link rel="stylesheet" href="style.css">
     
-    <!-- Third-Party Scripts & Styles -->
+    <!-- mga scripts nga section ni bai!!! -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +35,7 @@
     <section id="home" class="hero">
       <div class="hero-container">
         
-        <!-- Left Column: Name, Bio & Action Buttons (User POV Left) -->
+        <!-- Left Column: Name, Bio & Action Buttons -->
         <div class="hero-text">
           <div class="hero-greeting">Hi, I'm</div>
           <h1 class="hero-title">Jeth Casile</h1>
@@ -47,16 +47,20 @@
             <a href="#projects" class="btn primary-btn">View Work</a>
             <a href="#contact" class="btn secondary-btn">Get in Touch</a>
             
-            <!-- Distinct Oval Theme Toggle Button -->
+            <!-- Distinct Oval Theme Toggle Button paras theme-->
             <button id="theme-toggle" class="btn theme-btn-oval" aria-label="Toggle Theme" type="button">
               <i data-lucide="sun" id="theme-icon"></i>
             </button>
           </div>
         </div>
 
-        <!-- Right Column: Profile Photo (User POV Right) -->
+        <!-- Right Column: Profile photo nako -->
         <div class="hero-image-wrapper">
-          <img src="images/mypfpdark.jpg" alt="Jeth Casile" class="hero-img" id="hero-profile-img">
+          <div class="pfp-container" id="pfpContainer">
+            <img src="images/mypfpdark.jpg" alt="Jeth Casile" class="pfp-img real-img" id="realImg">
+           <video class="pfp-video dark-asset" src="images/dark1.mp4" muted loop playsinline preload="metadata"></video>
+           <video class="pfp-video light-asset" src="images/layt2.mp4" muted loop playsinline preload="metadata"></video>
+          </div>
         </div>
 
       </div>
@@ -74,7 +78,7 @@ Driven by curiosity and practical logic, I enjoy turning technical concepts into
     <section id="projects">
       <h2>Projects</h2>
 
-      <!-- PROJECT 1 -->
+      <!-- PROJECT 1  nako-->
       <div class="project-card">
         <h3>Computer Repair Service Request Portal</h3>
         
@@ -90,9 +94,9 @@ Driven by curiosity and practical logic, I enjoy turning technical concepts into
         </div>
       </div>
 
-      <!-- PROJECT 2 -->
+      <!-- PROJECT 2 ni -->
       <div class="project-card">
-        <h3>Developer & IT Portfolio Website</h3>
+        <h3>My Website</h3>
         
         <a href="#img-portfolio">
           <img src="images/portfolio-proof.png" alt="Portfolio Preview" class="project-thumb">
@@ -102,7 +106,7 @@ Driven by curiosity and practical logic, I enjoy turning technical concepts into
       </div>
     </section>
 
-    <!-- Full-Screen Lightbox Overlays -->
+    <!-- Full-Screen Lightbox Overlays para aesthetic tignan -->
     <div id="img-repair" class="lightbox">
       <a href="#projects" class="lightbox-close">&times;</a>
       <img src="images/repair-portal-proof.png" alt="Repair Portal Full Screen">
@@ -113,7 +117,7 @@ Driven by curiosity and practical logic, I enjoy turning technical concepts into
       <img src="images/portfolio-proof.png" alt="Portfolio Full Screen">
     </div>
 
-    <!-- Contact Section -->
+    <!-- Contact Section nako syempre -->
     <section id="contact">
       <h2>Get In Touch</h2>
       <p>I am always open to discussing new projects, web development ideas, or IT opportunities.</p>
@@ -138,7 +142,7 @@ Driven by curiosity and practical logic, I enjoy turning technical concepts into
   <footer>
     <div class="footer-container">
       <div class="footer-left">
-        <p>&copy; 2026 Jeth Aaron Casile. Built with HTML, CSS & JS.</p>
+        <p>&copy; 2026 Jeth Casile. Built with HTML, CSS & JS.</p>
       </div>
 
       <div class="footer-right">
@@ -149,11 +153,11 @@ Driven by curiosity and practical logic, I enjoy turning technical concepts into
     </div>
   </footer>
 
-  <!-- Interactive Creature Canvas Overlay -->
+  <!-- Interactive Creature Canvas Overlay ni diri nga part -->
   <canvas id="creature-canvas"></canvas>
   <script src="creature-cursor.js"></script>
 
-  <!-- Mouse Tracking Variable Script -->
+  <!-- Mouse Tracking Variable Script nga part-->
   <script>
     document.addEventListener('mousemove', (e) => {
       const x = (e.clientX / window.innerWidth) * 100;
@@ -163,79 +167,5 @@ Driven by curiosity and practical logic, I enjoy turning technical concepts into
     });
   </script>
 
-  <!-- GSAP Theme Wipe, Lucide Icon & Profile Image Swap Script -->
-  <script>
-    if (window.lucide) {
-      lucide.createIcons();
-    }
-
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    let isWiping = false;
-
-    if (themeToggleBtn) {
-      themeToggleBtn.addEventListener('click', (e) => {
-        if (isWiping) return;
-        isWiping = true;
-
-        const isLight = document.body.classList.contains('light');
-        const targetIsLight = !isLight;
-
-        const rect = themeToggleBtn.getBoundingClientRect();
-        const x = e.clientX || rect.left + rect.width / 2;
-        const y = e.clientY || rect.top + rect.height / 2;
-
-        const overlay = document.createElement('div');
-        overlay.className = 'theme-wipe-overlay';
-        overlay.style.backgroundColor = targetIsLight ? '#f8fafc' : '#09090b';
-        document.body.appendChild(overlay);
-
-        // Helper function to handle DOM updates at the exact moment the wipe completes
-        const applyThemeChanges = () => {
-          document.body.classList.toggle('light', targetIsLight);
-
-          // Swap profile photo dynamically
-          const profileImg = document.getElementById('hero-profile-img') || document.querySelector('.hero-img');
-          if (profileImg) {
-            profileImg.src = targetIsLight ? 'images/mypfplight.jpg' : 'images/mypfpdark.jpg';
-          }
-
-          // Toggle theme icon
-          const icon = document.getElementById('theme-icon');
-          if (icon) {
-            icon.setAttribute('data-lucide', targetIsLight ? 'moon' : 'sun');
-            if (window.lucide) lucide.createIcons();
-          }
-        };
-
-        if (window.gsap) {
-          gsap.fromTo(
-            overlay,
-            { clipPath: `circle(0px at ${x}px ${y}px)` },
-            {
-              clipPath: `circle(150vmax at ${x}px ${y}px)`,
-              duration: 0.65,
-              ease: 'power3.inOut',
-              onComplete: () => {
-                applyThemeChanges();
-
-                gsap.to(overlay, {
-                  opacity: 0,
-                  duration: 0.2,
-                  onComplete: () => {
-                    overlay.remove();
-                    isWiping = false;
-                  }
-                });
-              }
-            }
-          );
-        } else {
-          applyThemeChanges();
-          overlay.remove();
-          isWiping = false;
-        }
-      });
-    }
-  </script>
 </body>
 </html>
